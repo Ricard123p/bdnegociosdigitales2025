@@ -43,3 +43,36 @@ values (4,'ropa'),
 
 	   select * from categoria
 	   order by categoriaid asc;
+	   -- tabla productos
+create table productos1 (
+productoid int not null,
+nombreProducto varchar(20) not null,
+descripcion varchar(80) null,
+precio money not null,
+existencia int not null,
+categoriaid int null,
+constraint pk_producto1
+primary key(productoid),
+constraint unico_descripcion
+unique (nombreProducto),
+constraint chk_preccio
+check (precio>0.0 and precio <=1000),
+constraint chk_existencia
+check (existencia>0 and existencia<=200),
+constraint fk_categoria_producto1
+foreign key (categoriaid)
+references categoria(categoriaid)
+
+)
+
+select * from categoria 
+insert into productos1
+values (2,'tupsi pop','dulce sano para la lombris',34.5,45,5);
+
+insert into productos1
+values (3,'plancha','plancha facil',256.3,134,2);
+
+select * from productos1
+where categoriaid=5
+
+select * from categoria 
