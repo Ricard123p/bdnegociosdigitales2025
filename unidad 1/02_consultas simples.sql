@@ -97,3 +97,58 @@ CustomerID as 'nombre de cliente'
 
   from Orders
   where ShippedDate <> 1996
+
+ 
+
+ --filas duplicadas (distintc)
+ select * from Customers;
+  --mostrar los paises donde tengo cluentes
+  select Country as 'país' from Customers;
+  select distinct Country from Customers 
+ order by Country 
+
+ -- Mostrar todas las ordenes de compra donde la cantidad ordenada 
+ -- de productos comprados sea mayor a 5
+
+ select * from [Order Details];
+ select Quantity as 'cantidad' from [Order Details] where Quantity > 5 ;
+
+ -- Mostrar el nombre completo de empleado, su numero de empleado
+ -- fecha de nacimiento, la ciudad, fecha de contratacion
+ -- esta debe de ser de aquellos que fueron contratados despues de 1993,
+ --los resultados en sus encabezados deben ser mostrados en español
+
+ select * from Employees;
+ select FirstName as 'primer nombre', LastName 'segundo nombre', EmployeeID as  'numero de empleado',
+ BirthDate as 'fecha de nacimiento', City as 'ciudad', HireDate as 'fecha de contratacion'
+ from Employees
+ where year (HireDate) >1993 ;
+
+ --02
+  select * from Employees;
+ select (FirstName + '' + LastName) as 'nombre completo',
+ BirthDate as 'fecha de nacimiento', City as 'ciudad', HireDate as 'fecha de contratacion'
+ from Employees
+ where year (HireDate) >1993 ;
+
+
+ --03
+  select concat  (FirstName,' ',LastName, '-',Title) as 'nombre completo',
+city as ciudad,
+BirthDate as 'fecha de nacimiento',
+HireDate as'fecha de contrato'  
+from Employees where year(HireDate)='1993'
+
+-- Mostrar los empleados que no son dirigidos por el gefe 02
+ select FirstName as primernombre, 
+EmployeeID as 'numero empleado',
+LastName as 'apellido',
+city as ciudad,
+BirthDate as 'fecha de nacimiento',
+HireDate as'fecha de contrato' , 
+ ReportsTo as jefe  from Employees  where ReportsTo !=2;
+
+
+--seleccionar los empleados que no tengan gefe
+select * from Employees
+where ReportsTo is null
