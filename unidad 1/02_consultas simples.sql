@@ -341,3 +341,42 @@ where CompanyName like '%co%'
 -- seleccionar los empleados cuyo nombre comience con "a" y tenga exactamente 5 caracteres
 select FirstName, LastName from Employees
 where FirstName like 'A_____'
+
+
+use Northwind
+
+-- seleccionar los producctos que comiencen con A o B
+select * from Products 
+where ProductName like '[A-M]%'
+
+--seleccionar todos los productos que no comiencen con A o B
+Select * from Products
+where ProductName like '[^AB]%'
+
+--seleccionar todos los productos donde el nombre
+-- que comience con A pero que no contenga la E
+Select * from Products
+where ProductName like 'A[^E]%'
+
+-- clausula order BY
+select ProductID, ProductName, UnitPrice, UnitsInStock
+from Products
+order by UnitPrice desc
+
+select ProductID, ProductName, UnitPrice as 'capitan precio', UnitsInStock
+from Products
+order by 'capitan precio' desc 
+
+
+-- seleccionar los clientes ordenados por el pais y dentro por ciudad
+select CustomerID, Country, City, Region from Customers
+where Country in ('Brazil', 'Germany')
+order by Country asc, City asc
+
+select CustomerID, Country, City, Region from Customers
+where (Country = 'Brazil' or Country= 'Germany')
+and region is not null 
+order by Country asc, City asc
+
+select CustomerID, Country, City from Customers
+order by Country desc, City desc

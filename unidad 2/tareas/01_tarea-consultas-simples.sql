@@ -49,6 +49,6 @@ select * from Products
 select ProductName as 'producto', CategoryID as 'categoria', UnitsInStock as 'stok',
 Discontinued as 'descontinuado'
 from Products
-where CategoryID in ('1', '3','5') and UnitsInStock <=50 and Discontinued >=1
+where CategoryID in ('1', '3','5') and UnitsInStock >=50 and Discontinued =0
 
 
