@@ -1,4 +1,7 @@
- 
+ # inner joins
+
+![inner join](../img/inner%20join.png)
+
 -- seleccionar todos las categorias y productos 
 select * from 
  Categories
@@ -186,11 +189,11 @@ order by 1 asc
 
 --14 obtener los pedidos agrupados por pais de envio
 select e1.OrderID as [pedido],
-j1.ShipCountry as [país] from  Orders as e1
+j1.ShipCountry as [paï¿½s] from  Orders as e1
 inner join Orders as j1
 on e1.OrderID = j1.ShipCountry
 
-select o.ShipCountry as [país de envio], count (o.OrderID) 
+select o.ShipCountry as [paï¿½s de envio], count (o.OrderID) 
 as [numero de ordenes] from Orders as o
 group by o.ShipCountry
 order by 2 desc
@@ -364,7 +367,6 @@ select c.CompanyName, c.Country from Customers as c
 inner join Orders as o
 on c.CustomerID = o.CustomerID
 where Country = 'germany' and o.OrderDate<'1997-01-01'
-
 --26 listar los clientes que han realizado pedidos con un total entre $500 y $2000
 select c.CompanyName, sum(od.Quantity * od.UnitPrice) as [total] from Customers as c
 inner join Orders as o
@@ -374,42 +376,5 @@ on od.OrderID = o.OrderID
 group by c.CompanyName
 having sum(od.Quantity * od.UnitPrice) between 500 and 2000
 
-
-use Northwind
+```sql
 -- LEFT JOIN, RIGHT JOIN, FULL JOIN y CROSS JOIN
-
--- pracctica de utilizacion de left join
---SELECCIONAR LOS DATOS QUE SE VAN A UTILIZAR PARA INSERTAR EN LA TABLA
---DE LA TABLA PRODUCTS NEW
---product_id, productname, customer, category, untitprice.
--- discontinued, insert_date 
-
-select * from 
-
-alter table producs_new
-add constraint pk_products_new
-primary key (productbk)
-
--- crear la tabla mediante consulta y se agrega el campo de indentidad
--- y clave primaria 
-
-
-alter table products_new
-add constraint pk_products_new
-primary key (productbk)
-
-
-
-drop table producs_new
-
-
-alter table products_new
-add productbk
-
-select top 0 p.ProductID, p.ProductName as [producto]
-, [cu].CompanyName as [customer]
-
-insert into products_new (ProductID, producto,Customer)
-
-
-
